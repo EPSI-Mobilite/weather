@@ -15,6 +15,7 @@
 		D21C3B631C3E51F600E19D61 /* Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D21C3B611C3E51F600E19D61 /* Weather.xcdatamodeld */; };
 		D21C3B651C3E51F600E19D61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D21C3B641C3E51F600E19D61 /* Assets.xcassets */; };
 		D21C3B681C3E51F600E19D61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21C3B661C3E51F600E19D61 /* LaunchScreen.storyboard */; };
+		D2E8919A1C3E917A00DAA0FA /* CellCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E891991C3E917A00DAA0FA /* CellCity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		D21C3B641C3E51F600E19D61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D21C3B671C3E51F600E19D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D21C3B691C3E51F600E19D61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2E891991C3E917A00DAA0FA /* CellCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellCity.swift; sourceTree = "<group>"; };
 		D70E5438CB89984CB2CE5A19 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				D21C3B5C1C3E51F600E19D61 /* Accueil.swift */,
+				D2E891991C3E917A00DAA0FA /* CellCity.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				D21C3B631C3E51F600E19D61 /* Weather.xcdatamodeld in Sources */,
 				D21C3B5D1C3E51F600E19D61 /* Accueil.swift in Sources */,
 				D21296431C3E600600F062FF /* City.swift in Sources */,
+				D2E8919A1C3E917A00DAA0FA /* CellCity.swift in Sources */,
 				D21C3B5B1C3E51F600E19D61 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

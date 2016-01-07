@@ -11,7 +11,7 @@ import ObjectMapper
 import AlamofireObjectMapper
 
 class City : Mappable {
-    var ville: String = ""
+    var city: String = ""
     var long: Float = 0.0
     var lat: Float = 0.0
     var cp: Int = 0
@@ -21,7 +21,7 @@ class City : Mappable {
     }
     
     func mapping(map: Map) {
-        ville <- map["ville"]
+        city <- map["ville"]
         cp <- map["cp"]
         long <- map["long"]
         lat <- map["lat"]

@@ -38,10 +38,10 @@ class Accueil: UIViewController{
     
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
-        let city:City = self.cityArray[indexPath.row]
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! CellCity
         
-        cell.textLabel?.text = city.ville
+        cell.city?.text = self.cityArray[indexPath.row].city
+        cell.cp?.text = String(self.cityArray[indexPath.row].cp)
         return cell
     }
     

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Search-->
@@ -41,13 +42,41 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="43" id="BTD-mi-upf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="43" id="BTD-mi-upf" customClass="CellCity" customModule="Weather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="600" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BTD-mi-upf" id="089-VB-hdf">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="42.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NR5-R3-QZj">
+                                                    <rect key="frame" x="30" y="11" width="387" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="cp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uk8-yn-g4X">
+                                                    <rect key="frame" x="490" y="11" width="87" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Uk8-yn-g4X" secondAttribute="bottom" constant="2.5" id="1yl-KL-uzU"/>
+                                                <constraint firstItem="NR5-R3-QZj" firstAttribute="leading" secondItem="089-VB-hdf" secondAttribute="leadingMargin" constant="22" id="42E-r2-FUl"/>
+                                                <constraint firstItem="NR5-R3-QZj" firstAttribute="top" secondItem="089-VB-hdf" secondAttribute="topMargin" constant="3" id="7Be-fr-dzy"/>
+                                                <constraint firstItem="Uk8-yn-g4X" firstAttribute="leading" secondItem="NR5-R3-QZj" secondAttribute="trailing" constant="483" id="ACO-wy-n2k"/>
+                                                <constraint firstItem="Uk8-yn-g4X" firstAttribute="top" secondItem="089-VB-hdf" secondAttribute="topMargin" constant="3" id="KY5-kz-9nd"/>
+                                                <constraint firstItem="Uk8-yn-g4X" firstAttribute="leading" secondItem="NR5-R3-QZj" secondAttribute="trailing" constant="73" id="Lpc-ES-3Fq"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="NR5-R3-QZj" secondAttribute="bottom" constant="2.5" id="RJm-kK-8vg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Uk8-yn-g4X" secondAttribute="trailing" constant="15" id="h5b-34-SK7"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="city" destination="NR5-R3-QZj" id="Vpa-kM-IMr"/>
+                                            <outlet property="cp" destination="Uk8-yn-g4X" id="sZH-jc-T2W"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
