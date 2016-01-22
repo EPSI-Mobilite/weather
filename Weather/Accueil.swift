@@ -48,8 +48,10 @@ class Accueil: UIViewController{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let city:City = cityArray[indexPath.row]
-        print(city.cp);
+        //let city:City = cityArray[indexPath.row]
+        //performSegueWithIdentifier("goto_detail", sender: self)
+        
+       // print(city.cp);
     }
     
     //MARK: Search Bar
@@ -60,10 +62,20 @@ class Accueil: UIViewController{
         let text = SearchBar.text
         
         url += "&ville="+text!
-        print(url)
         Alamofire.request(.GET, url).responseArray("results") { (response: Response<[City], NSError>) in
             self.cityArray = response.result.value!
             self.tableView.reloadData()
+        }
+    }
+    
+    //MARK: Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goto_detail" {
+            if let destinationVC = segue.destinationViewController as? Detail{
+                if let tableIndex = tableView.indexPathForSelectedRow?.row {
+                    destinationVC.city = self.cityArray[tableIndex]
+                }
+            }
         }
     }
 }
