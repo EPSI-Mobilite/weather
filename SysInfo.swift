@@ -11,12 +11,12 @@ import ObjectMapper
 import AlamofireObjectMapper
 
 class SysInfo : Mappable {
-    var type: Int?
-    var id: Int?
-    var message: Int?
-    var country: String?
-    var sunrise: Int?
-    var sunset: Int?
+    var type: Int!
+    var id: Int!
+    var message: Int!
+    var country: String!
+    var sunrise: Int!
+    var sunset: Int!
     
     
     required init?(_ map: Map) {

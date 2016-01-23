@@ -12,10 +12,10 @@ import AlamofireObjectMapper
 
 class MainInfo : Mappable {
     var temp: Float = 0.0
-    var humidity: Float?
-    var pressure: Float?
-    var temp_min: Float?
-    var temp_max: Float?
+    var humidity: Float!
+    var pressure: Float!
+    var temp_min: Float!
+    var temp_max: Float!
     
     required init?(_ map: Map) {
         

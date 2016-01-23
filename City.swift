@@ -11,7 +11,7 @@ import ObjectMapper
 import AlamofireObjectMapper
 
 class City : Mappable {
-    var city: String?
+    var city: String!
     var long: Float = 0.0
     var lat: Float = 0.0
     var cp: Int = 0

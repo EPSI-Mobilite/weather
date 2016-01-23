@@ -11,8 +11,8 @@ import ObjectMapper
 import AlamofireObjectMapper
 
 class WindInfo : Mappable {
-    var speed: Float?
-    var deg: Float?
+    var speed: Float!
+    var deg: Float!
     
     required init?(_ map: Map) {
         

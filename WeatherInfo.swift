@@ -11,10 +11,10 @@ import ObjectMapper
 import AlamofireObjectMapper
 
 class WeatherInfo : Mappable {
-    var id: Int?
-    var main: String?
-    var description: String?
-    var icon: String?
+    var id: Int!
+    var main: String!
+    var description: String!
+    var icon: String!
     
     required init?(_ map: Map) {
         

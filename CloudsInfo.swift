@@ -11,7 +11,7 @@ import ObjectMapper
 import AlamofireObjectMapper
 
 class CloudsInfo : Mappable {
-    var all: Int?
+    var all: Int!
     
     required init?(_ map: Map) {
         
