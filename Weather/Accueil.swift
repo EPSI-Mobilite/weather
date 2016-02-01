@@ -48,7 +48,7 @@ class Accueil: UIViewController{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        //let city:City = cityArray[indexPath.row]
+//        let city:City = cityArray[indexPath.row]
         //performSegueWithIdentifier("goto_detail", sender: self)
         
        // print(city.cp);
@@ -63,8 +63,10 @@ class Accueil: UIViewController{
         
         url += "&ville="+text!
         Alamofire.request(.GET, url).responseArray("results") { (response: Response<[City], NSError>) in
-            self.cityArray = response.result.value!
-            self.tableView.reloadData()
+            if (response.result.error == nil) {
+                self.cityArray = response.result.value!
+                self.tableView.reloadData()
+            }
         }
     }
     

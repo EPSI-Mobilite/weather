@@ -8,13 +8,14 @@
 
 import UIKit
 import Alamofire
+import SwiftLoader
 
 class Detail:UIViewController {
     
     var city: City!
     var url: String = "http://api.openweathermap.org/data/2.5/weather"
-    var weather:Weather!
-    var appId: String = "44db6a862fba0b067b1930da0d769e98"
+    var weather:Weather?
+    var appId: String = "4d1e230aba90addc95e3ea4bbb9a08cd"
     var urlImg = "http://openweathermap.org/img/w/"
     
     @IBOutlet weak var name: UILabel!
@@ -23,23 +24,33 @@ class Detail:UIViewController {
     @IBOutlet weak var img: UIImageView!
     
     override func viewWillAppear(animated: Bool) {
-        name.text = city.city
-        
-        let tmpUrl = url + "?lat=" + String(city.lat) + "&lon=" + String(city.long) + "&appid=" + appId
-        
-        Alamofire.request(.GET, tmpUrl)
-            .responseObject { (response: Response<Weather, NSError>) in
-                self.weather = response.result.value
-                
-                self.main.text = self.weather.weather![0].main
-                self.temp.text = String(Temperature.kelvinToCelsuis(self.weather.main!.temp))
-                
-                let urlImage = self.urlImg + self.weather.weather![0].icon + ".png"
-                if let url = NSURL(string: urlImage) {
-                    if let data = NSData(contentsOfURL: url) {
-                        self.img.image = UIImage(data: data)!
-                    }
-                }
+        name.text = self.city.city
+        let urlWeather = url + "?q=" + city.city + ",fr" + "&appid=" + appId
+        SwiftLoader.show(animated: true)
+        DetailController.getWeather(urlWeather) { weather, error in
+            self.weather = weather
+            self.main.text = self.weather!.weather[0].main
+            self.temp.text = String(Temperature.kelvinToCelsuis(self.weather!.main.temp))
+            self.img.image = DetailController.getWeatherIcon(self.urlImg + self.weather!.weather![0].icon + ".png")
+            SwiftLoader.hide()
+        }
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if event?.subtype == UIEventSubtype.MotionShake {
+            SwiftLoader.show(animated: true)
+            let urlWeather = url + "?q=" + self.city.city + ",fr" + "&appid=" + appId
+            DetailController.getWeather(urlWeather) { weather, error in
+                self.weather = weather
+                self.main.text = self.weather!.weather[0].main
+                self.temp.text = String(Temperature.kelvinToCelsuis(self.weather!.main.temp))
+                self.img.image = DetailController.getWeatherIcon(self.urlImg + self.weather!.weather![0].icon + ".png")
+                SwiftLoader.hide()
+            }
         }
     }
 }
