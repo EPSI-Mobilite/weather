@@ -16,6 +16,13 @@ class City : Mappable {
     var lat: Float = 0.0
     var cp: Int = 0
     
+    init (city: String, long: Float, lat : Float, cp : Int) {
+        self.city = city
+        self.long = long
+        self.lat = lat
+        self.cp = cp
+    }
+    
     required init?(_ map: Map) {
         
     }
@@ -25,5 +32,10 @@ class City : Mappable {
         cp <- map["cp"]
         long <- map["long"]
         lat <- map["lat"]
+    }
+        
+    func toFavorite() -> Favorite {
+        
+        return Favorite(city : self.city, long : self.long, lat : self.lat, cp : self.cp)
     }
 }
