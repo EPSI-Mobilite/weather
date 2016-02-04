@@ -1,5 +1,5 @@
 //
-//  DetailController.swift
+//  WSController.swift
 //  Weather
 //
 //  Created by Quentin Logie on 2/1/16.
@@ -7,7 +7,7 @@
 //
 import Alamofire
 
-class DetailController {
+class WSController {
     
     static func getWeatherIcon (url: String) -> UIImage {
         let url = NSURL(string: url)

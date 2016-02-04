@@ -27,11 +27,11 @@ class Detail:UIViewController {
         name.text = self.city.city
         let urlWeather = url + "?q=" + city.city + ",fr" + "&appid=" + appId
         SwiftLoader.show(animated: true)
-        DetailController.getWeather(urlWeather) { weather, error in
+        WSController.getWeather(urlWeather) { weather, error in
             self.weather = weather
             self.main.text = self.weather!.weather[0].main
             self.temp.text = String(Temperature.kelvinToCelsuis(self.weather!.main.temp))
-            self.img.image = DetailController.getWeatherIcon(self.urlImg + self.weather!.weather![0].icon + ".png")
+            self.img.image = WSController.getWeatherIcon(self.urlImg + self.weather!.weather![0].icon + ".png")
             SwiftLoader.hide()
         }
     }
@@ -44,11 +44,11 @@ class Detail:UIViewController {
         if event?.subtype == UIEventSubtype.MotionShake {
             SwiftLoader.show(animated: true)
             let urlWeather = url + "?q=" + self.city.city + ",fr" + "&appid=" + appId
-            DetailController.getWeather(urlWeather) { weather, error in
+            WSController.getWeather(urlWeather) { weather, error in
                 self.weather = weather
                 self.main.text = self.weather!.weather[0].main
                 self.temp.text = String(Temperature.kelvinToCelsuis(self.weather!.main.temp))
-                self.img.image = DetailController.getWeatherIcon(self.urlImg + self.weather!.weather![0].icon + ".png")
+                self.img.image = WSController.getWeatherIcon(self.urlImg + self.weather!.weather![0].icon + ".png")
                 SwiftLoader.hide()
             }
         }
