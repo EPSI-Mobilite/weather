@@ -64,4 +64,39 @@ class Detail:UIViewController {
             }
         }
     }
+    
+    @IBAction func clickButtonFav(sender: AnyObject) {
+        
+        let realm = try! Realm()
+        
+        let fav = realm.objects(Favorite)
+        if fav.contains({ $0.city == self.city.city }) { //Delete fav
+            self.butFav.setTitle("☆", forState: UIControlState.Normal)
+            //remove from realm
+            try! realm.write {
+                realm.deleteAll()
+            }
+            
+            //Add cityFav to Realm
+            for f in fav
+            {
+                if f.toCity().city != self.city.city {
+                    try! realm.write {
+                        realm.add(f)
+                    }
+                }
+            }
+            
+            
+        }
+        else { //Add fav
+            self.butFav.setTitle("⭐️", forState: UIControlState.Normal)
+            
+            try! realm.write {
+                realm.add(self.city.toFavorite())
+            }
+        }
+        
+    }
+    
 }

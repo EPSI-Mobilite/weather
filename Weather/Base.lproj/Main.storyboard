@@ -70,6 +70,9 @@
                                                 <rect key="frame" x="447" y="7" width="133" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="clickButtonFav:" destination="I3D-92-d5W" eventType="touchUpInside" id="FRM-cf-LGW"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
