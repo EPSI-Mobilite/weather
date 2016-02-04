@@ -18,6 +18,7 @@ class Detail:UIViewController {
     var weather:Weather?
     var appId: String = "4d1e230aba90addc95e3ea4bbb9a08cd"
     var urlImg = "http://openweathermap.org/img/w/"
+    var favArray:[City] = []
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var temp: UILabel!
@@ -28,6 +29,15 @@ class Detail:UIViewController {
     override func viewWillAppear(animated: Bool) {
         name.text = self.city.city
         butFav.setTitle("☆", forState: UIControlState.Normal)
+        
+        //Add realm Favorites in favArray
+        let realm = try! Realm()
+        let fav = realm.objects(Favorite)
+        
+        for fa in fav
+        {
+            self.favArray.append(fa.toCity())
+        }
         
         let urlWeather = url + "?lat=" + String(city.getLat()) + "&lon=" + String(city.getLong()) + "&appid=" + appId
         SwiftLoader.show(animated: true)
@@ -69,24 +79,24 @@ class Detail:UIViewController {
         
         let realm = try! Realm()
         
-        let fav = realm.objects(Favorite)
-        if fav.contains({ $0.city == self.city.city }) { //Delete fav
+        let favRealm = realm.objects(Favorite)
+        if favRealm.contains({ $0.city == self.city.city }) { //Delete fav
             self.butFav.setTitle("☆", forState: UIControlState.Normal)
+            
             //remove from realm
             try! realm.write {
                 realm.deleteAll()
             }
             
-            //Add cityFav to Realm
-            for f in fav
+            //Add favArray to Realm exept this city
+            for f in self.favArray
             {
-                if f.toCity().city != self.city.city {
+                if f.city != self.city.city {
                     try! realm.write {
-                        realm.add(f)
+                        realm.add(f.toFavorite())
                     }
                 }
             }
-            
             
         }
         else { //Add fav

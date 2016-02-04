@@ -140,7 +140,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
             
             //Delete Fav
             if self.cityFav.contains({ $0.city == clickedCity.city }) {
-                if indexPath.row != 0 { //can't delete geoloc
+                if indexPath.row != 0 ||  (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse && CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedAlways){ //can delete 0 when geoloc disabled
                     //remove from realm / cityFav / cityArray
                     try! realm.write {
                         realm.deleteAll()
@@ -191,7 +191,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         // Buttons
         if self.cityFav.contains({ $0.city == clickedCity.city })  {
             
-            if indexPath.row == 0 {//Already fav
+            if indexPath.row == 0 &&  (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways){//Already fav
                 addFavAction.backgroundColor = UIColor.greenColor()
                 addFavAction.title = "Déjà Favoris"
             }
