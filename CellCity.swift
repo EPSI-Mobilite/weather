@@ -11,7 +11,6 @@ import UIKit
 class CellCity:UITableViewCell {
     
     @IBOutlet weak var city: UILabel!
-    @IBOutlet weak var cp: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

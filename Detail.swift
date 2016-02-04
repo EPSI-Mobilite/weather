@@ -25,7 +25,7 @@ class Detail:UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         name.text = self.city.city
-        let urlWeather = url + "?q=" + city.city + ",fr" + "&appid=" + appId
+        let urlWeather = url + "?lat=" + String(city.getLat()) + "&lon=" + String(city.getLong()) + "&appid=" + appId
         SwiftLoader.show(animated: true)
         WSController.getWeather(urlWeather) { weather, error in
             self.weather = weather
@@ -43,7 +43,7 @@ class Detail:UIViewController {
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if event?.subtype == UIEventSubtype.MotionShake {
             SwiftLoader.show(animated: true)
-            let urlWeather = url + "?q=" + self.city.city + ",fr" + "&appid=" + appId
+            let urlWeather = url + "?lat=" + String(city.getLat()) + "&lon=" + String(city.getLong()) + "&appid=" + appId
             WSController.getWeather(urlWeather) { weather, error in
                 self.weather = weather
                 self.main.text = self.weather!.weather[0].main

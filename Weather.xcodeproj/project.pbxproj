@@ -24,9 +24,12 @@
 		D21C3B651C3E51F600E19D61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D21C3B641C3E51F600E19D61 /* Assets.xcassets */; };
 		D21C3B681C3E51F600E19D61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21C3B661C3E51F600E19D61 /* LaunchScreen.storyboard */; };
 		D29D69B41C5F639200266C58 /* WSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29D69B31C5F639200266C58 /* WSController.swift */; };
+		D2A96E941C633FB900EAD929 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A96E931C633FB900EAD929 /* CoreLocation.framework */; };
 		D2BEEDBF1C536C0B006E272E /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEEDBE1C536C0B006E272E /* Temperature.swift */; };
 		D2BEEDC11C53867B006E272E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEEDC01C53867B006E272E /* Image.swift */; };
 		D2E8919A1C3E917A00DAA0FA /* CellCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E891991C3E917A00DAA0FA /* CellCity.swift */; };
+		D2FC5D771C634C5000751943 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC5D761C634C5000751943 /* Geometry.swift */; };
+		D2FC5D791C634CB400751943 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC5D781C634CB400751943 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,9 +53,12 @@
 		D21C3B671C3E51F600E19D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D21C3B691C3E51F600E19D61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D29D69B31C5F639200266C58 /* WSController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSController.swift; sourceTree = "<group>"; };
+		D2A96E931C633FB900EAD929 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D2BEEDBE1C536C0B006E272E /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		D2BEEDC01C53867B006E272E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		D2E891991C3E917A00DAA0FA /* CellCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellCity.swift; sourceTree = "<group>"; };
+		D2FC5D761C634C5000751943 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		D2FC5D781C634CB400751943 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		D70E5438CB89984CB2CE5A19 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A96E941C633FB900EAD929 /* CoreLocation.framework in Frameworks */,
 				2A93E8F40BE714651360150C /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +78,7 @@
 		4EC61839B7E4FDDC4CC67041 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2A96E931C633FB900EAD929 /* CoreLocation.framework */,
 				1E8DDE60139BA1D858C80FEC /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -139,6 +147,8 @@
 				6B724E021C513A7C00194FAC /* WindInfo.swift */,
 				6B724E041C513B4200194FAC /* CloudsInfo.swift */,
 				6BEDCA941C5F539200DD2E9C /* Favorite.swift */,
+				D2FC5D761C634C5000751943 /* Geometry.swift */,
+				D2FC5D781C634CB400751943 /* Location.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -206,6 +216,11 @@
 					D21C3B561C3E51F600E19D61 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = C2YTFM84TW;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -297,6 +312,7 @@
 				6BEDCA951C5F539200DD2E9C /* Favorite.swift in Sources */,
 				6B724E011C51377C00194FAC /* MainInfo.swift in Sources */,
 				6B724E051C513B4200194FAC /* CloudsInfo.swift in Sources */,
+				D2FC5D791C634CB400751943 /* Location.swift in Sources */,
 				D21C3B631C3E51F600E19D61 /* Weather.xcdatamodeld in Sources */,
 				D21C3B5D1C3E51F600E19D61 /* Accueil.swift in Sources */,
 				6B724DF91C5112A900194FAC /* Detail.swift in Sources */,
@@ -304,6 +320,7 @@
 				D2BEEDC11C53867B006E272E /* Image.swift in Sources */,
 				6B724E031C513A7C00194FAC /* WindInfo.swift in Sources */,
 				D2E8919A1C3E917A00DAA0FA /* CellCity.swift in Sources */,
+				D2FC5D771C634C5000751943 /* Geometry.swift in Sources */,
 				D21C3B5B1C3E51F600E19D61 /* AppDelegate.swift in Sources */,
 				6B724DFB1C51271B00194FAC /* Weather.swift in Sources */,
 				D29D69B41C5F639200266C58 /* WSController.swift in Sources */,
@@ -424,6 +441,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EPSI.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -436,6 +454,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EPSI.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

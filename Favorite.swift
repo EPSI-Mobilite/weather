@@ -13,18 +13,24 @@ class Favorite: Object {
     dynamic var city: String!
     dynamic var long: Float = 0.0
     dynamic var lat: Float = 0.0
-    dynamic var cp: Int = 0
     
-    convenience required init (city: String, long: Float, lat : Float, cp : Int) {
+    convenience required init (city: String, long: Float, lat : Float) {
         self.init()
         self.city = city
         self.long = long
         self.lat = lat
-        self.cp = cp
+    }
+    
+    func getLat() -> Float {
+        return self.lat
+    }
+    
+    func getLong() -> Float {
+        return self.long
     }
 
-     func toCity() -> City {
-        return City(city : self.city, long : self.long, lat : self.lat, cp : self.cp)
+    func toCity() -> City {
+        return City(city : self.city, long : self.long, lat : self.lat)
     }
     
 // Specify properties to ignore (Realm won't persist these)

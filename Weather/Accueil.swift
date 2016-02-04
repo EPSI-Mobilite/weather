@@ -9,22 +9,32 @@
 import UIKit
 import Alamofire
 import RealmSwift
+import CoreLocation
 
-class Accueil: UIViewController{
+class Accueil: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var SearchBar: UISearchBar!
     var cityArray:[City] = []
     var cityFav:[City] = []
+    var locationManager = CLLocationManager()
     
-    var url = "http://www.citysearch-api.com/fr/city?login=weather&apikey=so48035e001f25344e90ca7e025cf846e2e9ea65cc"
+    var urlApiGoogle = "https://maps.googleapis.com/maps/api/geocode/json?"
+    
+    var apiKeyGoogle = "AIzaSyDnb5FccFdqX6NCYjcQ7E_35t5w4Wvpk7w"
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     override func viewWillAppear(animated: Bool) {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
         let realm = try! Realm()
         let fav = realm.objects(Favorite)
     
@@ -32,9 +42,10 @@ class Accueil: UIViewController{
         for fa in fav
         {
             self.cityFav.append(fa.toCity())
-            self.cityArray.append(fa.toCity())
+//            self.cityArray.append(fa.toCity())
         }
     }
+    
     //MARK: Table view
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -50,17 +61,12 @@ class Accueil: UIViewController{
         let cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! CellCity
         
         cell.city?.text = self.cityArray[indexPath.row].city
-        cell.cp?.text = String(self.cityArray[indexPath.row].cp)
+//        cell.cp?.text = String(self.cityArray[indexPath.row].cp)
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-//        let city:City = cityArray[indexPath.row]
-        //performSegueWithIdentifier("goto_detail", sender: self)
-        
-       // print(city.cp);
     }
     
     //MARK: Search Bar
@@ -70,29 +76,27 @@ class Accueil: UIViewController{
         
         let text = SearchBar.text
         
-        url += "&ville="+text!
-        Alamofire.request(.GET, url).responseArray("results") { (response: Response<[City], NSError>) in
-            if (response.result.error == nil) {
-                self.cityArray = response.result.value!
-            
-                // Remove Favorites from cityArray
-                var cityToDelete: [City] = [City]()
-                for c in self.cityArray {
-                    if self.cityFav.contains({ $0.city == c.city }) {
-                        cityToDelete.append(c)
-                    }
+        let url = urlApiGoogle+"address="+text!+"&key="+apiKeyGoogle
+        
+        WSController.getCity(url) { cities, error in
+            self.cityArray = cities!
+             //Remove Favorites from cityArray
+            var cityToDelete: [City] = [City]()
+            for c in self.cityArray {
+            if self.cityFav.contains({ $0.city == c.city }) {
+                cityToDelete.append(c)
                 }
-                for c in cityToDelete {
-                    if let index = self.cityArray.indexOf({ $0.city == c.city }) {
-                        self.cityArray.removeAtIndex(index)
-                    }
-                }
-            
-                //concat cityFav & cityArray
-                self.cityArray = self.cityFav + self.cityArray
-            
-                self.tableView.reloadData()
             }
+            for c in cityToDelete {
+                if let index = self.cityArray.indexOf({ $0.city == c.city }) {
+                    self.cityArray.removeAtIndex(index)
+                }
+            }
+            
+            //concat cityFav & cityArray
+            self.cityArray = self.cityFav + self.cityArray
+            
+            self.tableView.reloadData()   
         }
     }
     
@@ -177,5 +181,15 @@ class Accueil: UIViewController{
         
     }
     
+    //MARK: Localisation
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("didFailWithError: \(error.description)")
+        let errorAlert = UIAlertView(title: "Error", message: "Failed to Get Your Location", delegate: nil, cancelButtonTitle: "Ok")
+        errorAlert.show()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        let newLocation
+    }
 }
 

@@ -12,30 +12,32 @@ import AlamofireObjectMapper
 
 class City : Mappable {
     var city: String!
-    var long: Float = 0.0
-    var lat: Float = 0.0
-    var cp: Int = 0
+    var geometry: Geometry!
     
-    init (city: String, long: Float, lat : Float, cp : Int) {
+    init (city: String, long: Float, lat : Float) {
         self.city = city
-        self.long = long
-        self.lat = lat
-        self.cp = cp
+        self.geometry.location.long = long
+        self.geometry.location.lat = lat
     }
     
     required init?(_ map: Map) {
         
     }
     
+    func getLat() -> Float {
+        return self.geometry.location.lat
+    }
+    
+    func getLong() -> Float {
+        return self.geometry.location.long
+    }
+    
     func mapping(map: Map) {
-        city <- map["ville"]
-        cp <- map["cp"]
-        long <- map["long"]
-        lat <- map["lat"]
+        city <- map["formatted_address"]
+        geometry <- map["geometry"]
     }
         
     func toFavorite() -> Favorite {
-        
-        return Favorite(city : self.city, long : self.long, lat : self.lat, cp : self.cp)
+        return Favorite(city : self.city, long : self.geometry.location.long, lat : self.geometry.location.lat)
     }
 }
