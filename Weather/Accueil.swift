@@ -42,7 +42,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         for fa in fav
         {
             self.cityFav.append(fa.toCity())
-//            self.cityArray.append(fa.toCity())
+            self.cityArray.append(fa.toCity())
         }
     }
     

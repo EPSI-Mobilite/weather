@@ -14,6 +14,11 @@ class Location : Mappable {
         
     }
     
+    init (long: Float, lat: Float) {
+        self.long = long
+        self.lat = lat
+    }
+    
     func mapping(map: Map) {
         long <- map["lng"]
         lat <- map["lat"]

@@ -16,6 +16,10 @@ class City : Mappable {
     
     init (city: String, long: Float, lat : Float) {
         self.city = city
+        let l = Location(long: long, lat: lat)
+        let g = Geometry(location: l)
+        
+        self.geometry = g
         self.geometry.location.long = long
         self.geometry.location.lat = lat
     }

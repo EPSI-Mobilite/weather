@@ -13,6 +13,10 @@ class Geometry : Mappable {
         
     }
     
+    init (location: Location) {
+        self.location = location
+    }
+    
     func mapping(map: Map) {
         location <- map["location"]
     }
