@@ -9,6 +9,10 @@ import Alamofire
 
 class WSController {
     
+    static var urlApiGoogle = "https://maps.googleapis.com/maps/api/geocode/json?"
+    
+    static var apiKeyGoogle = "AIzaSyDnb5FccFdqX6NCYjcQ7E_35t5w4Wvpk7w"
+    
     static func getWeatherIcon (url: String) -> UIImage {
         let url = NSURL(string: url)
         let data = NSData(contentsOfURL: url!)
@@ -42,5 +46,13 @@ class WSController {
                     completionHandler(response.result.value! as [City], nil)
                 }
         }
+    }
+    
+    static func getUrlForCityFromLongLat(long: Double, lat: Double) -> String {
+        return urlApiGoogle + "latlng=" + String(lat) + "," + String(long) + "&key=" + apiKeyGoogle
+    }
+    
+    static func getUrlForCityFromAddress(address: String) -> String {
+        return urlApiGoogle+"address="+address+"&key="+apiKeyGoogle
     }
 }

@@ -19,6 +19,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
     var cityArray:[City] = []
     var cityFav:[City] = []
     var locationManager = CLLocationManager()
+    var cityLocalisation:[City] = []
     
     var urlApiGoogle = "https://maps.googleapis.com/maps/api/geocode/json?"
     
@@ -33,16 +34,25 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
         
-        let realm = try! Realm()
-        let fav = realm.objects(Favorite)
-    
-        //Add realm Favorites in cityFav & cityArray
-        for fa in fav
-        {
-            self.cityFav.append(fa.toCity())
-            self.cityArray.append(fa.toCity())
+        let url = WSController.getUrlForCityFromLongLat(locationManager.location!.coordinate.longitude, lat: locationManager.location!.coordinate.latitude)
+        WSController.getCity(url) { cities, error in
+            if(cities!.count > 0) {
+                self.cityLocalisation.append(cities![0])
+                self.cityArray.append(cities![0])
+            }
+
+            //Remove Favorites from cityArray
+            let realm = try! Realm()
+            let fav = realm.objects(Favorite)
+            
+            //Add realm Favorites in cityFav & cityArray
+            for fa in fav
+            {
+                self.cityFav.append(fa.toCity())
+                self.cityArray.append(fa.toCity())
+            }
+            self.tableView.reloadData()
         }
     }
     
@@ -61,7 +71,6 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! CellCity
         
         cell.city?.text = self.cityArray[indexPath.row].city
-//        cell.cp?.text = String(self.cityArray[indexPath.row].cp)
         return cell
     }
     
@@ -76,7 +85,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         
         let text = SearchBar.text
         
-        let url = urlApiGoogle+"address="+text!+"&key="+apiKeyGoogle
+        let url = WSController.getUrlForCityFromAddress(text!)
         
         WSController.getCity(url) { cities, error in
             self.cityArray = cities!
@@ -94,7 +103,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
             }
             
             //concat cityFav & cityArray
-            self.cityArray = self.cityFav + self.cityArray
+            self.cityArray = self.cityLocalisation + self.cityFav + self.cityArray
             
             self.tableView.reloadData()   
         }
@@ -127,7 +136,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
                     realm.deleteAll()
                 }
                 self.cityArray.removeAtIndex(indexPath.row)
-                self.cityFav.removeAtIndex(indexPath.row)
+                self.cityFav.removeAtIndex(indexPath.row - self.cityLocalisation.count)
                 
                 //Add cityFav to Realm
                 for c in self.cityFav
@@ -143,6 +152,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
             //Add Fav
             else {
                 //Remove row in table view
+                
                 self.cityArray.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 
@@ -150,12 +160,12 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
                 try! realm.write {
                     realm.add(clickedCity.toFavorite())
                 }
-                self.cityArray.insert(clickedCity, atIndex: self.cityFav.count)
+                self.cityArray.insert(clickedCity, atIndex: self.cityFav.count + self.cityLocalisation.count)
                 
                 //Update Tableview
                 tableView.beginUpdates()
                 tableView.insertRowsAtIndexPaths([
-                    NSIndexPath(forRow: self.cityFav.count, inSection: 0)
+                    NSIndexPath(forRow: self.cityFav.count + self.cityLocalisation.count, inSection: 0)
                     ], withRowAnimation: .Automatic)
                 
                 tableView.endUpdates()
@@ -184,12 +194,10 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
     //MARK: Localisation
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("didFailWithError: \(error.description)")
-        let errorAlert = UIAlertView(title: "Error", message: "Failed to Get Your Location", delegate: nil, cancelButtonTitle: "Ok")
-        errorAlert.show()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let newLocation
-    }
+//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print(locations.last?.coordinate.latitude)
+//    }
 }
 
