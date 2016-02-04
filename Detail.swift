@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftLoader
+import RealmSwift
 
 class Detail:UIViewController {
     
@@ -22,9 +23,12 @@ class Detail:UIViewController {
     @IBOutlet weak var temp: UILabel!
     @IBOutlet weak var main: UILabel!
     @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var butFav: UIButton!
     
     override func viewWillAppear(animated: Bool) {
         name.text = self.city.city
+        butFav.setTitle("☆", forState: UIControlState.Normal)
+        
         let urlWeather = url + "?lat=" + String(city.getLat()) + "&lon=" + String(city.getLong()) + "&appid=" + appId
         SwiftLoader.show(animated: true)
         WSController.getWeather(urlWeather) { weather, error in
@@ -33,6 +37,13 @@ class Detail:UIViewController {
             self.temp.text = String(Temperature.kelvinToCelsuis(self.weather!.main.temp))
             self.img.image = WSController.getWeatherIcon(self.urlImg + self.weather!.weather![0].icon + ".png")
             SwiftLoader.hide()
+            
+            let realm = try! Realm()
+            let fav = realm.objects(Favorite)
+            if fav.contains({ $0.city == self.city.city }) {
+                self.butFav.setTitle("⭐️", forState: UIControlState.Normal)
+            }
+            
         }
     }
     
@@ -53,4 +64,39 @@ class Detail:UIViewController {
             }
         }
     }
+    
+    @IBAction func clickButtonFav(sender: AnyObject) {
+        
+        let realm = try! Realm()
+        
+        let fav = realm.objects(Favorite)
+        if fav.contains({ $0.city == self.city.city }) { //Delete fav
+            self.butFav.setTitle("☆", forState: UIControlState.Normal)
+            //remove from realm
+            try! realm.write {
+                realm.deleteAll()
+            }
+            
+            //Add cityFav to Realm
+            for f in fav
+            {
+                if f.toCity().city != self.city.city {
+                    try! realm.write {
+                        realm.add(f)
+                    }
+                }
+            }
+            
+            
+        }
+        else { //Add fav
+            self.butFav.setTitle("⭐️", forState: UIControlState.Normal)
+            
+            try! realm.write {
+                realm.add(self.city.toFavorite())
+            }
+        }
+        
+    }
+    
 }

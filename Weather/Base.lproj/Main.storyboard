@@ -65,6 +65,16 @@
                                                 <segue destination="BYZ-38-t0r" kind="showDetail" action="showViewController:sender:" id="T1X-Pi-Cx7"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="b3d-K6-wDm">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mOP-Po-d9f">
+                                                <rect key="frame" x="447" y="7" width="133" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="clickButtonFav:" destination="I3D-92-d5W" eventType="touchUpInside" id="FRM-cf-LGW"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -82,6 +92,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="LW2-hW-WIZ"/>
                     <connections>
+                        <outlet property="butFav" destination="mOP-Po-d9f" id="3L0-kT-w3D"/>
                         <outlet property="img" destination="Wsp-vm-eVi" id="iiD-ut-N8a"/>
                         <outlet property="main" destination="wS2-bQ-IWo" id="8Mk-rh-jue"/>
                         <outlet property="name" destination="9Cg-R9-BqQ" id="ICc-5E-vY7"/>
