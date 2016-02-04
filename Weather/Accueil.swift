@@ -35,24 +35,33 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
-        let url = WSController.getUrlForCityFromLongLat(locationManager.location!.coordinate.longitude, lat: locationManager.location!.coordinate.latitude)
-        WSController.getCity(url) { cities, error in
-            if(cities!.count > 0) {
-                self.cityLocalisation.append(cities![0])
-                self.cityArray.append(cities![0])
+        //Location Authorized or not
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways) {
+            let url = WSController.getUrlForCityFromLongLat(locationManager.location!.coordinate.longitude, lat: locationManager.location!.coordinate.latitude)
+            WSController.getCity(url) { cities, error in
+                if(cities!.count > 0) {
+                    self.cityLocalisation.append(cities![0])
+                    self.cityArray.append(cities![0])
+                }
+                self.setCityArray();
+                self.tableView.reloadData()
             }
-
-            //Remove Favorites from cityArray
-            let realm = try! Realm()
-            let fav = realm.objects(Favorite)
-            
-            //Add realm Favorites in cityFav & cityArray
-            for fa in fav
-            {
-                self.cityFav.append(fa.toCity())
-                self.cityArray.append(fa.toCity())
-            }
+        }
+        else {
+            self.setCityArray();
             self.tableView.reloadData()
+        }
+    }
+    func setCityArray()
+    {
+        //Add realm Favorites in cityFav & cityArray
+        let realm = try! Realm()
+        let fav = realm.objects(Favorite)
+        
+        for fa in fav
+        {
+            self.cityFav.append(fa.toCity())
+            self.cityArray.append(fa.toCity())
         }
     }
     
@@ -131,30 +140,33 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
             
             //Delete Fav
             if self.cityFav.contains({ $0.city == clickedCity.city }) {
-                //remove from realm / cityFav / cityArray
-                try! realm.write {
-                    realm.deleteAll()
-                }
-                self.cityArray.removeAtIndex(indexPath.row)
-                self.cityFav.removeAtIndex(indexPath.row - self.cityLocalisation.count)
-                
-                //Add cityFav to Realm
-                for c in self.cityFav
-                {
+                if indexPath.row != 0 { //can't delete geoloc
+                    //remove from realm / cityFav / cityArray
                     try! realm.write {
-                        realm.add(c.toFavorite())
+                        realm.deleteAll()
                     }
+                    self.cityArray.removeAtIndex(indexPath.row)
+                    self.cityFav.removeAtIndex(indexPath.row - self.cityLocalisation.count)
+                    
+                    //Add cityFav to Realm
+                    for c in self.cityFav
+                    {
+                        try! realm.write {
+                            realm.add(c.toFavorite())
+                        }
+                    }
+                    
+                    //Remove row in table view
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 }
-                
-                //Remove row in table view
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             //Add Fav
             else {
-                //Remove row in table view
-                
-                self.cityArray.removeAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                //Remove row in table view except geoloc
+                if indexPath.row != 0 {
+                    self.cityArray.removeAtIndex(indexPath.row)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
                 
                 // add favorite in realm / cityArray
                 try! realm.write {
@@ -177,11 +189,18 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         }
         
         // Buttons
-        if self.cityFav.contains({ $0.city == clickedCity.city }) {
-            addFavAction.backgroundColor = UIColor.redColor()
-            addFavAction.title = "Supprimer"
+        if self.cityFav.contains({ $0.city == clickedCity.city })  {
+            
+            if indexPath.row == 0 {//Already fav
+                addFavAction.backgroundColor = UIColor.greenColor()
+                addFavAction.title = "Déjà Favoris"
+            }
+            else { //Delete
+                addFavAction.backgroundColor = UIColor.redColor()
+                addFavAction.title = "Supprimer"
+            }
         }
-            //Button Add
+        //Button Add
         else {
             addFavAction.backgroundColor = UIColor.blueColor()
         }
