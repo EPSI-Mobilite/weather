@@ -14,7 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication sourceApplication: String?, annotation annotation: AnyObject) -> Bool
+    {
+        if((url.host as String!) == "Map")
+        {
+            let segue: UIStoryboardSegue
+            let destinationVC = segue.destinationViewController as? Detail
+            navigationController?.
+        }
+        
+        return true;
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         return true

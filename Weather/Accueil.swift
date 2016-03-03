@@ -34,7 +34,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        
+        print("Test")
         //Location Authorized or not
         if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways) {
             let url = WSController.getUrlForCityFromLongLat(locationManager.location!.coordinate.longitude, lat: locationManager.location!.coordinate.latitude)
