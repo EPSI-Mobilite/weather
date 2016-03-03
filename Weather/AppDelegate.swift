@@ -19,9 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         if((url.host as String!) == "Map")
         {
-            let segue: UIStoryboardSegue
-            let destinationVC = segue.destinationViewController as? Detail
-            navigationController?.
+
         }
         
         return true;
