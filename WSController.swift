@@ -20,7 +20,6 @@ class WSController {
     }
     
     static func getWeather(url: String, completionHandler: (Weather?, NSError?) -> ()) {
-        print(url)
         self.makeCallWeather(url, completionHandler: completionHandler)
     }
     
