@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="Weather_Widget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vVV-2E-7Be"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fb7-hM-b83"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleAspectFit" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9g-RW-Da6">
+                                <rect key="frame" x="8" y="4" width="303" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="OnclickCity:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="pHZ-hG-hhg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWA-Ef-aMa">
+                                <rect key="frame" x="249" y="41" width="62" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="A9g-RW-Da6" secondAttribute="trailing" constant="8" id="0Ky-pS-fAC"/>
+                            <constraint firstItem="ZWA-Ef-aMa" firstAttribute="top" secondItem="A9g-RW-Da6" secondAttribute="bottom" constant="7" id="4i4-AU-b4c"/>
+                            <constraint firstItem="A9g-RW-Da6" firstAttribute="top" secondItem="vVV-2E-7Be" secondAttribute="bottom" constant="4" id="JC6-tn-Emm"/>
+                            <constraint firstItem="Fb7-hM-b83" firstAttribute="top" secondItem="ZWA-Ef-aMa" secondAttribute="bottom" constant="8" id="Kon-a1-uoM"/>
+                            <constraint firstItem="A9g-RW-Da6" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="8" id="UPw-w5-WZJ"/>
+                            <constraint firstAttribute="trailing" secondItem="ZWA-Ef-aMa" secondAttribute="trailing" constant="9" id="cRI-KD-fhZ"/>
+                            <constraint firstItem="ZWA-Ef-aMa" firstAttribute="top" secondItem="A9g-RW-Da6" secondAttribute="bottom" constant="7" id="iRd-cQ-FXq"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="70"/>
+                    <connections>
+                        <outlet property="city" destination="A9g-RW-Da6" id="esY-ID-duL"/>
+                        <outlet property="temp" destination="ZWA-Ef-aMa" id="s7H-yd-Y7k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="284"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.99178733107087436" green="0.98801450514668998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+</document>
