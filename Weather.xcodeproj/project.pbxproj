@@ -24,6 +24,7 @@
 		6B0B60691C67A998009799B4 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC5D761C634C5000751943 /* Geometry.swift */; };
 		6B0B606A1C67A99A009799B4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC5D781C634CB400751943 /* Location.swift */; };
 		6B0B606B1C67AE30009799B4 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEEDBE1C536C0B006E272E /* Temperature.swift */; };
+		6B3FFA371C9B575100AFCDC2 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3FFA361C9B575100AFCDC2 /* Pods.framework */; };
 		6B724DF91C5112A900194FAC /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B724DF81C5112A900194FAC /* Detail.swift */; };
 		6B724DFB1C51271B00194FAC /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B724DFA1C51271B00194FAC /* Weather.swift */; };
 		6B724DFD1C512EEB00194FAC /* SysInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B724DFC1C512EEB00194FAC /* SysInfo.swift */; };
@@ -79,6 +80,7 @@
 		6B0B60531C67A64E009799B4 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		6B0B60561C67A64E009799B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		6B0B60581C67A64E009799B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B3FFA361C9B575100AFCDC2 /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		6B724DF81C5112A900194FAC /* Detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		6B724DFA1C51271B00194FAC /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		6B724DFC1C512EEB00194FAC /* SysInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SysInfo.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B3FFA371C9B575100AFCDC2 /* Pods.framework in Frameworks */,
 				6B0B60511C67A64E009799B4 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +134,7 @@
 		4EC61839B7E4FDDC4CC67041 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B3FFA361C9B575100AFCDC2 /* Pods.framework */,
 				D2A96E931C633FB900EAD929 /* CoreLocation.framework */,
 				1E8DDE60139BA1D858C80FEC /* Pods.framework */,
 				6B0B60501C67A64E009799B4 /* NotificationCenter.framework */,
@@ -490,9 +494,13 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "Weather Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "EPSI.Weather.Weather-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "EPSI.Weather2.Weather-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -503,9 +511,13 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "Weather Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "EPSI.Weather.Weather-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "EPSI.Weather2.Weather-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
