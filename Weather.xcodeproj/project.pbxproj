@@ -24,6 +24,7 @@
 		6B0B60691C67A998009799B4 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC5D761C634C5000751943 /* Geometry.swift */; };
 		6B0B606A1C67A99A009799B4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FC5D781C634CB400751943 /* Location.swift */; };
 		6B0B606B1C67AE30009799B4 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BEEDBE1C536C0B006E272E /* Temperature.swift */; };
+		6B154CD21C9EEC2100AE2678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B154CD11C9EEC2100AE2678 /* Assets.xcassets */; };
 		6B3FFA371C9B575100AFCDC2 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3FFA361C9B575100AFCDC2 /* Pods.framework */; };
 		6B724DF91C5112A900194FAC /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B724DF81C5112A900194FAC /* Detail.swift */; };
 		6B724DFB1C51271B00194FAC /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B724DFA1C51271B00194FAC /* Weather.swift */; };
@@ -38,7 +39,6 @@
 		D21C3B5D1C3E51F600E19D61 /* Accueil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21C3B5C1C3E51F600E19D61 /* Accueil.swift */; };
 		D21C3B601C3E51F600E19D61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21C3B5E1C3E51F600E19D61 /* Main.storyboard */; };
 		D21C3B631C3E51F600E19D61 /* Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D21C3B611C3E51F600E19D61 /* Weather.xcdatamodeld */; };
-		D21C3B651C3E51F600E19D61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D21C3B641C3E51F600E19D61 /* Assets.xcassets */; };
 		D21C3B681C3E51F600E19D61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21C3B661C3E51F600E19D61 /* LaunchScreen.storyboard */; };
 		D29D69B41C5F639200266C58 /* WSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29D69B31C5F639200266C58 /* WSController.swift */; };
 		D2A96E941C633FB900EAD929 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A96E931C633FB900EAD929 /* CoreLocation.framework */; };
@@ -80,6 +80,7 @@
 		6B0B60531C67A64E009799B4 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		6B0B60561C67A64E009799B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		6B0B60581C67A64E009799B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B154CD11C9EEC2100AE2678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../Documents/iOS weather icon/iOS/Assets.xcassets"; sourceTree = "<group>"; };
 		6B3FFA361C9B575100AFCDC2 /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		6B724DF81C5112A900194FAC /* Detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		6B724DFA1C51271B00194FAC /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
@@ -96,7 +97,6 @@
 		D21C3B5C1C3E51F600E19D61 /* Accueil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Accueil.swift; path = Weather/Accueil.swift; sourceTree = "<group>"; };
 		D21C3B5F1C3E51F600E19D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D21C3B621C3E51F600E19D61 /* Weather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weather.xcdatamodel; sourceTree = "<group>"; };
-		D21C3B641C3E51F600E19D61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D21C3B671C3E51F600E19D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D21C3B691C3E51F600E19D61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D29D69B31C5F639200266C58 /* WSController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSController.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 			children = (
 				D21C3B5A1C3E51F600E19D61 /* AppDelegate.swift */,
 				D21C3B5E1C3E51F600E19D61 /* Main.storyboard */,
-				D21C3B641C3E51F600E19D61 /* Assets.xcassets */,
+				6B154CD11C9EEC2100AE2678 /* Assets.xcassets */,
 				D21C3B661C3E51F600E19D61 /* LaunchScreen.storyboard */,
 				D21C3B691C3E51F600E19D61 /* Info.plist */,
 				D21C3B611C3E51F600E19D61 /* Weather.xcdatamodeld */,
@@ -350,7 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21C3B681C3E51F600E19D61 /* LaunchScreen.storyboard in Resources */,
-				D21C3B651C3E51F600E19D61 /* Assets.xcassets in Resources */,
+				6B154CD21C9EEC2100AE2678 /* Assets.xcassets in Resources */,
 				D21C3B601C3E51F600E19D61 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,6 +609,7 @@
 			baseConfigurationReference = D70E5438CB89984CB2CE5A19 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -626,6 +627,7 @@
 			baseConfigurationReference = 878A57044927AD46B2BBD0A8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;

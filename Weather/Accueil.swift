@@ -80,6 +80,16 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! CellCity
         
         cell.city?.text = self.cityArray[indexPath.row].city
+        
+        //setting row colors
+        if(indexPath.row <= self.cityFav.count) {
+            cell.backgroundColor = UIColor(red: 255/255, green: 254/255, blue: 237/255, alpha: 1)
+
+        }
+        if(indexPath.row == 0) {
+            cell.backgroundColor = UIColor(red: 245/255, green: 246/255, blue: 255/255, alpha: 1)
+        }
+        
         return cell
     }
     
@@ -136,7 +146,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         
         let clickedCity: City = self.cityArray[indexPath.row]
 
-        let addFavAction = UITableViewRowAction(style: .Normal, title: "Add Fav") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+        let addFavAction = UITableViewRowAction(style: .Normal, title: "Ajout Favoris") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             
             //Delete Fav
             if self.cityFav.contains({ $0.city == clickedCity.city }) {
