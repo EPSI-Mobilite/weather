@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A93E8F40BE714651360150C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8DDE60139BA1D858C80FEC /* Pods.framework */; };
-		6B06CCA51CA0276B00E774C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B06CCA41CA0276B00E774C0 /* Assets.xcassets */; };
+		6B06CCB01CA033FE00E774C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B06CCAF1CA033FE00E774C0 /* Assets.xcassets */; };
 		6B0B60511C67A64E009799B4 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0B60501C67A64E009799B4 /* NotificationCenter.framework */; };
 		6B0B60541C67A64E009799B4 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B60531C67A64E009799B4 /* TodayViewController.swift */; };
 		6B0B60571C67A64E009799B4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B60551C67A64E009799B4 /* MainInterface.storyboard */; };
@@ -76,7 +76,7 @@
 
 /* Begin PBXFileReference section */
 		1E8DDE60139BA1D858C80FEC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B06CCA41CA0276B00E774C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../Documents/iOS weather icon/Assets.xcassets"; sourceTree = "<group>"; };
+		6B06CCAF1CA033FE00E774C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B0B604F1C67A64E009799B4 /* Weather Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Weather Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0B60501C67A64E009799B4 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		6B0B60531C67A64E009799B4 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +144,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6B06CCAE1CA033FE00E774C0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6B06CCAF1CA033FE00E774C0 /* Assets.xcassets */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		6B0B60521C67A64E009799B4 /* Weather Widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,7 +206,7 @@
 		D21C3B591C3E51F600E19D61 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				6B06CCA41CA0276B00E774C0 /* Assets.xcassets */,
+				6B06CCAE1CA033FE00E774C0 /* iOS */,
 				D21C3B5A1C3E51F600E19D61 /* AppDelegate.swift */,
 				D21C3B5E1C3E51F600E19D61 /* Main.storyboard */,
 				D21C3B661C3E51F600E19D61 /* LaunchScreen.storyboard */,
@@ -353,7 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21C3B681C3E51F600E19D61 /* LaunchScreen.storyboard in Resources */,
-				6B06CCA51CA0276B00E774C0 /* Assets.xcassets in Resources */,
+				6B06CCB01CA033FE00E774C0 /* Assets.xcassets in Resources */,
 				D21C3B601C3E51F600E19D61 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,7 +625,7 @@
 			baseConfigurationReference = D70E5438CB89984CB2CE5A19 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -635,7 +643,7 @@
 			baseConfigurationReference = 878A57044927AD46B2BBD0A8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
