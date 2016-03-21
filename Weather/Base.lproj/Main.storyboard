@@ -119,7 +119,7 @@
                                 <color key="barTintColor" red="0.8953881669" green="0.91725718359999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="Weather" id="ih5-h1-ehF">
-                                        <barButtonItem key="rightBarButtonItem" title="🦄" id="V2e-cc-EOV">
+                                        <barButtonItem key="rightBarButtonItem" title="🗺" id="V2e-cc-EOV">
                                             <connections>
                                                 <segue destination="7vE-qV-hzm" kind="show" id="axw-5f-f9E"/>
                                             </connections>
