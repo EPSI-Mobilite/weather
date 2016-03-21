@@ -20,10 +20,10 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
     var cityFav:[City] = []
     var locationManager = CLLocationManager()
     var cityLocalisation:[City] = []
-    
     var urlApiGoogle = "https://maps.googleapis.com/maps/api/geocode/json?"
-    
     var apiKeyGoogle = "AIzaSyDnb5FccFdqX6NCYjcQ7E_35t5w4Wvpk7w"
+    
+    @IBOutlet weak var mapsButton: UIBarButtonItem!
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,7 +34,7 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        print("Test")
+
         //Location Authorized or not
         if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways) {
             let url = WSController.getUrlForCityFromLongLat(locationManager.location!.coordinate.longitude, lat: locationManager.location!.coordinate.latitude)

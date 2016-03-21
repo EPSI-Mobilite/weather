@@ -44,7 +44,7 @@ class Detail:UIViewController {
         WSController.getWeather(urlWeather) { weather, error in
             self.weather = weather
             self.main.text = self.weather!.weather[0].main
-            self.temp.text = String(Temperature.kelvinToCelsuis(self.weather!.main.temp))
+            self.temp.text = Temperature.kelvinFormatInDegre(self.weather!.main.temp)
             self.img.image = WSController.getWeatherIcon(self.urlImg + self.weather!.weather![0].icon + ".png")
             SwiftLoader.hide()
             
@@ -68,7 +68,7 @@ class Detail:UIViewController {
             WSController.getWeather(urlWeather) { weather, error in
                 self.weather = weather
                 self.main.text = self.weather!.weather[0].main
-                self.temp.text = String(Temperature.kelvinToCelsuis(self.weather!.main.temp))
+                self.temp.text = Temperature.kelvinFormatInDegre(self.weather!.main.temp)
                 self.img.image = WSController.getWeatherIcon(self.urlImg + self.weather!.weather![0].icon + ".png")
                 SwiftLoader.hide()
             }
