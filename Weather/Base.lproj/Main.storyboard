@@ -42,7 +42,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urj-2s-IA7">
+                                    <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urj-2s-IA7">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <color key="barTintColor" red="0.89538816690003553" green="0.9172571836187402" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <textAttributes key="titleTextAttributes">
@@ -74,6 +74,8 @@
                                 <constraints>
                                     <constraint firstItem="Wsp-vm-eVi" firstAttribute="centerX" secondItem="lXe-8P-vxN" secondAttribute="centerX" id="7Vr-7z-9gT"/>
                                     <constraint firstItem="wS2-bQ-IWo" firstAttribute="centerX" secondItem="lXe-8P-vxN" secondAttribute="centerX" constant="-30" id="CSu-cv-7AY"/>
+                                    <constraint firstItem="Urj-2s-IA7" firstAttribute="leading" secondItem="lXe-8P-vxN" secondAttribute="leading" id="L2V-jx-eVR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Urj-2s-IA7" secondAttribute="trailing" id="UNp-bx-ugd"/>
                                     <constraint firstItem="F0e-vt-CsM" firstAttribute="centerX" secondItem="lXe-8P-vxN" secondAttribute="centerX" constant="30" id="bhj-Yh-dwd"/>
                                     <constraint firstItem="9Cg-R9-BqQ" firstAttribute="centerX" secondItem="lXe-8P-vxN" secondAttribute="centerX" id="lkK-FA-clA"/>
                                 </constraints>
