@@ -9,7 +9,6 @@
 import UIKit
 import NotificationCenter
 import CoreLocation
-import Weather
 
 class TodayViewController: UIViewController, NCWidgetProviding {
 
