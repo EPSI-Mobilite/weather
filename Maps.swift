@@ -55,7 +55,7 @@ class Maps:UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate{
     }
     
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        let urlWeather = url + "?lat=" + String(marker.position.latitude) + "&lon=" + String(marker.position.latitude) + "&appid=" + appId
+        let urlWeather = url + "?lat=" + String(marker.position.latitude) + "&lon=" + String(marker.position.longitude) + "&appid=" + appId
         WSController.getWeather(urlWeather) { weather, error in
             self.cityLabel.text = marker.title! + ", " + Temperature.kelvinFormatInDegre(weather!.main.temp) + " : " + weather!.weather[0].main
             
