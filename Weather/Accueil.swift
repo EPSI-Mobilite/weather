@@ -167,6 +167,8 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
                     }
                     
                     //Remove row in table view
+                    let dellCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
+                    dellCell.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 }
             }
@@ -184,12 +186,16 @@ class Accueil: UIViewController, CLLocationManagerDelegate {
                 }
                 self.cityArray.insert(clickedCity, atIndex: self.cityFav.count + self.cityLocalisation.count)
                 
+                
                 //Update Tableview
                 tableView.beginUpdates()
                 tableView.insertRowsAtIndexPaths([
                     NSIndexPath(forRow: self.cityFav.count + self.cityLocalisation.count, inSection: 0)
                     ], withRowAnimation: .Automatic)
-                
+                tableView.endUpdates()
+                tableView.beginUpdates()
+                let newCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: self.cityFav.count + self.cityLocalisation.count, inSection: 0))! as UITableViewCell
+                newCell.backgroundColor = UIColor(red: 255/255, green: 254/255, blue: 237/255, alpha: 1)
                 tableView.endUpdates()
                 
                 //add favorite in cityFav
